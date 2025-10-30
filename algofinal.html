@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto Chakra Network Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Debug info -->
+    <div class="debug-info" id="debugInfo">Loading...</div>
+
+    <!-- Chakra Background Particles -->
+    <div class="chakra-overlay" id="chakraOverlay"></div>
+
+    <div class="container">
+        <h1>⚡ Naruto: Nine-Tails Chakra Network ⚡</h1>
+        <p class="subtitle">Dijkstra's Algorithm Visualizer with Speed Control</p>
+        
+        <div class="main-grid">
+            <div class="sidebar">
+                <h2>Network Configuration</h2>
+                
+                <div class="input-group">
+                    <label>Number of Ninjas (N):</label>
+                    <input type="number" id="numNinjas" value="4" min="1" max="40">
+                </div>
+                
+                <div class="input-group">
+                    <label>Number of Connections (M):</label>
+                    <input type="number" id="numConnections" value="5" min="1" max="100">
+                </div>
+                
+                <div class="input-group">
+                    <label>Source Ninja (S):</label>
+                    <input type="number" id="sourceNinja" value="1" min="1">
+                </div>
+                
+                <div class="input-group">
+                    <label>Chakra Links (u v t):</label>
+                    <textarea id="connections" rows="6">1 2 100
+1 3 150
+2 4 200
+3 4 100
+2 3 50</textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Query Targets:</label>
+                    <textarea id="queries" rows="3">4
+3</textarea>
+                </div>
+
+                <!-- Chakra Speed Control -->
+                <div class="speed-control">
+                    <label>⚡ Chakra Transmission Speed:</label>
+                    <div class="slider-container">
+                        <span class="speed-value" id="speedValue">1.0x</span>
+                        <input type="range" min="0.1" max="3" step="0.1" value="1" class="speed-slider" id="speedSlider">
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn-visualize" id="visualizeBtn">▶ Visualize</button>
+                    <button class="btn-reset" id="resetBtn">↻ Reset</button>
+                </div>
+                
+                <div class="results" id="results" style="display: none;">
+                    <h3>Query Results</h3>
+                    <div id="resultsContent"></div>
+                </div>
+            </div>
+            
+            <div class="canvas-container">
+                <h2>Chakra Distribution Network</h2>
+                <canvas id="canvas" width="900" height="600"></canvas>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #ff8c00;"></div>
+                        <span>Naruto (Source)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #ff6b35;"></div>
+                        <span>Query Target</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #1e90ff;"></div>
+                        <span>Activated Ninja</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #00d4ff;"></div>
+                        <span>Blue Glow = Active Link</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
